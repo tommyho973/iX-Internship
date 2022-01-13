@@ -23,4 +23,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/away']);
   }
 
+  navToComment() {
+    this.router.navigate(['/comment']);
+  }
+
+
+
 }

@@ -5,6 +5,8 @@ const cors = require('cors');
 
 const feedRoutes = require('./routes/feed');
 const tasksRoutes = require('./routes/tasks');
+const contactRoutes = require('./routes/contact');
+const suggestionRoutes = require('./routes/suggestion');
 
 const app = express();
 
@@ -20,6 +22,8 @@ app.use((req, res, next) => {
 
 app.use('/feed', feedRoutes);
 app.use('/tasks',  tasksRoutes);
+app.use('/contact', contactRoutes);
+app.use('/suggest', suggestionRoutes);
 
 mongoose
   .connect(
