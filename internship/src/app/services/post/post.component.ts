@@ -25,4 +25,16 @@ export class PostService {
   getPosts() {
     return this.http.get(this.url + '/feed/posts').toPromise();
   }
+
+  updatePostOnDb(post: Post) {
+    this.http.put(this.url + '/feed/' + post.id, {
+      title: post.title,
+      content: post.content
+    }).toPromise();
+  }
+
+  deletePostOnDb(post: Post) {
+    const deleteUrl = this.url + '/feed/' + post.id;
+    return this.http.delete(deleteUrl).toPromise();
+  }
 }

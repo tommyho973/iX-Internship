@@ -1,12 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const feedRoutes = require('./routes/feed');
+const tasksRoutes = require('./routes/tasks');
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -16,10 +19,11 @@ app.use((req, res, next) => {
 });
 
 app.use('/feed', feedRoutes);
+app.use('/tasks',  tasksRoutes);
 
 mongoose
   .connect(
-    'mongodb+srv://tommyho973:<password>@cluster0.vtuil.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+    'mongodb+srv://tommyho973:oGzdhw2KZx8w3ti9@cluster0.vtuil.mongodb.net/Cluster0?retryWrites=true&w=majority'
   )
   .then(() => {
     console.log('Connected to MongoDB');
