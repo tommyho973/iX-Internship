@@ -13,7 +13,7 @@ export class ContactService {
 
   addContactToDb(contact: Contact) {
     this.http
-      .post(this.url + '/feed/contact', {
+      .post(this.url + '/contact/contact', {
         name: contact.name,
         email: contact.email,
         phone: contact.phone,
@@ -24,11 +24,11 @@ export class ContactService {
   }
 
   getContacts() {
-    return this.http.get(this.url + '/feed/contacts').toPromise();
+    return this.http.get(this.url + '/contact/contacts').toPromise();
   }
 
   updateContactOnDb(contact: Contact) {
-    this.http.put(this.url + '/feed/' + contact.id, {
+    this.http.put(this.url + '/contact/' + contact.id, {
       name: contact.name,
       email: contact.email,
       phone: contact.phone
@@ -36,7 +36,7 @@ export class ContactService {
   }
 
   deleteContactOnDb(contact: Contact) {
-    const deleteUrl = this.url + '/feed/' + contact.id;
+    const deleteUrl = this.url + '/contact/' + contact.id;
     return this.http.delete(deleteUrl).toPromise();
   }
 }

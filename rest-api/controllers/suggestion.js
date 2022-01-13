@@ -23,7 +23,7 @@ exports.getSuggestions = (req, res, next) => {
 exports.createSuggestion = (req, res, next) => {
   const title = req.body.title;
   const content = req.body.content;
-  const task = new Task({
+  const suggestion = new Suggestion({
     title: title,
     content: content,
   });

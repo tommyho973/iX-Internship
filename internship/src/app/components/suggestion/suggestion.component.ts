@@ -47,6 +47,7 @@ export class SuggestionComponent implements OnInit {
   async updateSuggestion() {
     await this.suggestionService.updateSuggestionOnDb(this.suggestion);
     this.suggestion = new Suggestion();
+    this.editing = false;
   }
 
   async deleteSuggestion(suggestion: Suggestion) {

@@ -1,14 +1,14 @@
 <div class="card">
   <div class="card-title text-center mt-4">
-    <h3>Post List</h3>
+    <h3>Comments</h3>
   </div>
   <div class="card-body text-center">
     <div class="input-group mb-3">
       <input
         type="text"
         class="form-control"
-        placeholder="Post Title"
-        aria-label="Post Title"
+        placeholder="Project Name"
+        aria-label="Project Name"
         aria-describedby="basic-addon1"
         [(ngModel)]="post.title"
       />
@@ -17,8 +17,8 @@
       <input
         type="text"
         class="form-control"
-        placeholder="Post Content"
-        aria-label="Post Content"
+        placeholder="Comment"
+        aria-label="Comment"
         aria-describedby="basic-addon1"
         [(ngModel)]="post.content"
       />
@@ -30,7 +30,7 @@
       (click)="addPost()"
       [disabled]="this.post.title == null || this.post.content == null"
     >
-      Add Post
+      Submit
     </button>
     <button
       *ngIf="this.editing"
@@ -38,20 +38,20 @@
       (click)="updatePost()"
       [disabled]="this.post.title == null || this.post.content == null"
     >
-      Update Post
+      Update 
     </button>
   </div>
 </div>
 
 <div class="card mt-5">
   <div class="card-title text-center mt-3">
-    <h3>Posts from MongoDB</h3>
+    <h3>Comment Database</h3>
   </div>
 
   <div class="row">
     <div class="col text-center">
       <button class="btn btn-secondary" (click)="fetchPosts()">
-        Fetch Posts
+        Fetch Comments
       </button>
     </div>
   </div>

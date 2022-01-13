@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 app.use('/feed', feedRoutes);
 app.use('/tasks',  tasksRoutes);
 app.use('/contact', contactRoutes);
-app.use('/suggest', suggestionRoutes);
+app.use('/suggestion', suggestionRoutes);
 
 mongoose
   .connect(

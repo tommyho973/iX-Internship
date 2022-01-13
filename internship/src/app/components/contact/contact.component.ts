@@ -49,6 +49,7 @@ export class ContactComponent implements OnInit {
   async updateContact() {
     await this.contactService.updateContactOnDb(this.contact);
     this.contact = new Contact();
+    this.editing = false;
   }
 
   async deleteContact(contact: Contact) {

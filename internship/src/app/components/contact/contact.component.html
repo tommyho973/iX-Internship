@@ -1,1 +1,282 @@
-<p>contact works!</p>
+<div class="card">
+    <div class="card-title text-center mt-4">
+      <h3>Contact List</h3>
+    </div>
+    <div class="card-body text-center">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Full Name"
+          aria-label="Name"
+          aria-describedby="basic-addon1"
+          [(ngModel)]="contact.name"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Email"
+          aria-label="Email"
+          aria-describedby="basic-addon1"
+          [(ngModel)]="contact.email"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Phone Number"
+          aria-label="Phone Number"
+          aria-describedby="basic-addon1"
+          [(ngModel)]="contact.phone"
+        />
+      </div>
+  
+      <button
+        *ngIf="!this.editing"
+        class="btn btn-primary"
+        (click)="addContact()"
+        [disabled]="this.contact.name == null || this.contact.email == null || this.contact.phone==null"
+      >
+        Submit 
+      </button>
+      <button
+        *ngIf="this.editing"
+        class="btn btn-primary"
+        (click)="updateContact()"
+        [disabled]="this.contact.name == null || this.contact.email == null || this.contact.phone==null"
+      >
+        Update 
+      </button>
+    </div>
+  </div>
+  
+  <div class="card mt-5">
+    <div class="card-title text-center mt-3">
+      <h3>Contacts in Database</h3>
+    </div>
+  
+    <div class="row">
+      <div class="col text-center">
+        <button class="btn btn-secondary" (click)="fetchContacts()">
+          Fetch Feedback
+        </button>
+      </div>
+    </div>
+  
+    <div class="card-body">
+      <hr />
+  
+      <div class="row" *ngIf="this.contacts.length == 0">
+        <div class="col text-center">No Posts</div>
+      </div>
+  
+      <div class="accordion" id="accordionExample" *ngFor="let post of contacts">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              [attr.data-bs-target]="'#A' + post.id"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              {{ post.name }}
+            </button>
+          </h2>
+          <div
+            id="{{ 'A' + post.id }}"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              <strong> {{ post.email }} </strong>
+  
+              <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                  <button class="btn btn-primary me-1" (click)="editContact(post)">
+                    EDIT
+                  </button>
+                  <button class="btn btn-danger ms-1" (click)="deleteContact(post)">
+                    DELETE
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!-- <div _ngcontent-serverapp-c6="" class="bg">
+    <div _ngcontent-serverapp-c6="" class="container">
+        <div _ngcontent-serverapp-c6="" class="row justify-content-end">
+            <div _ngcontent-serverapp-c6="" class="col-lg-0">
+                <a _ngcontent-serverapp-c6="" class="btn btn-close" href="/"><img _ngcontent-serverapp-c6="" height="32"
+                        src="/assets/images/close.png" width="32"></a>
+            </div>
+        </div>
+        <div _ngcontent-serverapp-c6="" class="row">
+            <div _ngcontent-serverapp-c6="" class="col-lg-6">
+                <div _ngcontent-serverapp-c6="" class="card">
+                    <div _ngcontent-serverapp-c6="" class="container">
+                        <h2 _ngcontent-serverapp-c6="" class="card-title">Get in touch</h2>
+                        <div _ngcontent-serverapp-c6="" class="card-body">
+                            <form _ngcontent-serverapp-c6="" data-netlify="true" method="POST" name="contact"
+                                novalidate="" class="ng-pristine ng-valid ng-touched">
+                                <div _ngcontent-serverapp-c6="" class="row">
+                                    <div _ngcontent-serverapp-c6="" class="form-group col"><label
+                                            _ngcontent-serverapp-c6="">name</label><input _ngcontent-serverapp-c6=""
+                                            class="form-control ng-pristine ng-valid ng-touched" name="getInTouch.name"
+                                            placeholder="Text" type="text"></div>
+                                    <div _ngcontent-serverapp-c6="" class="form-group col"><label
+                                            _ngcontent-serverapp-c6="">surname</label><input _ngcontent-serverapp-c6=""
+                                            class="form-control ng-pristine ng-valid ng-touched"
+                                            name="getInTouch.surname" placeholder="Text" type="text"></div>
+                                </div>
+                                <div _ngcontent-serverapp-c6="" class="row">
+                                    <div _ngcontent-serverapp-c6="" class="form-group col"><label
+                                            _ngcontent-serverapp-c6="">email</label><input _ngcontent-serverapp-c6=""
+                                            class="form-control ng-untouched ng-pristine ng-valid"
+                                            name="getInTouch.email" placeholder="@" type="email"></div>
+                                    <div _ngcontent-serverapp-c6="" class="form-group col"><label
+                                            _ngcontent-serverapp-c6="">telephone</label><input
+                                            _ngcontent-serverapp-c6=""
+                                            class="form-control ng-pristine ng-valid ng-touched"
+                                            name="getInTouch.telephone" placeholder="+27" type="tel"></div>
+                                </div>
+                                <div _ngcontent-serverapp-c6="" class="form-group"><label
+                                        _ngcontent-serverapp-c6="">message</label><textarea _ngcontent-serverapp-c6=""
+                                        class="form-control ng-untouched ng-pristine ng-valid" cols="50"
+                                        name="getInTouch.message" placeholder="Let us know how we can help"
+                                        rows="4">                </textarea></div>
+                                <div _ngcontent-serverapp-c6="" class="text-center"><button _ngcontent-serverapp-c6=""
+                                        class="btn btn-submit btn-block" type="submit"> submit </button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div _ngcontent-serverapp-c6="" class="col-lg-6" style="margin-top: 70px; padding-left: 60px;">
+               
+                <div _ngcontent-serverapp-c6="" class="ng-star-inserted">
+                    <div _ngcontent-serverapp-c6="" class="cards">
+                        <div _ngcontent-serverapp-c6="" class="cards-title">
+                            <div _ngcontent-serverapp-c6="" class="row">
+                                <div _ngcontent-serverapp-c6="" class="col">
+                                    <div _ngcontent-serverapp-c6="" class="row"><img _ngcontent-serverapp-c6=""
+                                            class="image-flag" src="/assets/images/flag.png">
+                                        <div _ngcontent-serverapp-c6="" class="col">
+                                            <div _ngcontent-serverapp-c6="" class="row">
+                                                <h3 _ngcontent-serverapp-c6="" class="cards-body">South Africa</h3>
+                                            </div>
+                                            <div _ngcontent-serverapp-c6="" class="row">
+                                                <h4 _ngcontent-serverapp-c6="">Cape Town</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div _ngcontent-serverapp-c6="" class="col">
+                                        <div _ngcontent-serverapp-c6="" class="row"
+                                            style="margin-top: 10px; margin-left: 40px;">
+                                            <div _ngcontent-serverapp-c6="" class="col-lg-2"><img
+                                                    _ngcontent-serverapp-c6="" height="22"
+                                                    src="/assets/images/telephone.png"></div>
+                                            <div _ngcontent-serverapp-c6="" class="col-lg-8">
+                                                <h5 _ngcontent-serverapp-c6=""><a _ngcontent-serverapp-c6=""
+                                                        class="contact-info" href="tel:+27 72 520 4468">+27 72 520
+                                                        4468</a></h5>
+                                            </div>
+                                        </div>
+                                        <div _ngcontent-serverapp-c6="" class="row"
+                                            style="margin-top: 10px; margin-left: 40px;">
+                                            <div _ngcontent-serverapp-c6="" class="col-lg-2"><img
+                                                    _ngcontent-serverapp-c6="" class="image-email"
+                                                    src="/assets/images/email.png"></div>
+                                            <div _ngcontent-serverapp-c6="" class="col-lg-8">
+                                                <h5 _ngcontent-serverapp-c6=""><a _ngcontent-serverapp-c6=""
+                                                        class="contact-info"
+                                                        href="mailto:miki@appstrax.tech">miki@appstrax.tech</a></h5>
+                                            </div>
+                                        </div>
+                                        <div _ngcontent-serverapp-c6="" class="row"
+                                            style="margin-top: 10px; margin-left: 40px;">
+                                            <div _ngcontent-serverapp-c6="" class="col-lg-2"><img
+                                                    _ngcontent-serverapp-c6="" height="22"
+                                                    src="/assets/images/marker.png"></div>
+                                            <div _ngcontent-serverapp-c6="" class="col-lg-9">
+                                                <h5 _ngcontent-serverapp-c6="" class="contact-info">Office 1, 48 second
+                                                    avenue, Harfield Village, Cape Town </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div _ngcontent-serverapp-c6="" class="ng-star-inserted">
+                    <div _ngcontent-serverapp-c6="" class="cards">
+                        <div _ngcontent-serverapp-c6="" class="cards-title">
+                            <div _ngcontent-serverapp-c6="" class="row">
+                                <div _ngcontent-serverapp-c6="" class="col">
+                                    <div _ngcontent-serverapp-c6="" class="row"><img _ngcontent-serverapp-c6=""
+                                            class="image-flag" src="/assets/images/flag.png">
+                                        <div _ngcontent-serverapp-c6="" class="col">
+                                            <div _ngcontent-serverapp-c6="" class="row">
+                                                <h3 _ngcontent-serverapp-c6="" class="cards-body">South Africa</h3>
+                                            </div>
+                                            <div _ngcontent-serverapp-c6="" class="row">
+                                                <h4 _ngcontent-serverapp-c6="">Johannesburg</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div _ngcontent-serverapp-c6="" class="col">
+                                        <div _ngcontent-serverapp-c6="" class="row"
+                                            style="margin-top: 10px; margin-left: 40px;">
+                                            <div _ngcontent-serverapp-c6="" class="col-lg-2"><img
+                                                    _ngcontent-serverapp-c6="" height="22"
+                                                    src="/assets/images/telephone.png"></div>
+                                            <div _ngcontent-serverapp-c6="" class="col-lg-8">
+                                                <h5 _ngcontent-serverapp-c6=""><a _ngcontent-serverapp-c6=""
+                                                        class="contact-info" href="tel:+27 74 113 7414">+27 74 113
+                                                        7414</a></h5>
+                                            </div>
+                                        </div>
+                                        <div _ngcontent-serverapp-c6="" class="row"
+                                            style="margin-top: 10px; margin-left: 40px;">
+                                            <div _ngcontent-serverapp-c6="" class="col-lg-2"><img
+                                                    _ngcontent-serverapp-c6="" class="image-email"
+                                                    src="/assets/images/email.png"></div>
+                                            <div _ngcontent-serverapp-c6="" class="col-lg-8">
+                                                <h5 _ngcontent-serverapp-c6=""><a _ngcontent-serverapp-c6=""
+                                                        class="contact-info"
+                                                        href="mailto:jacques@appstrax.tech">jacques@appstrax.tech</a>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                        <div _ngcontent-serverapp-c6="" class="row"
+                                            style="margin-top: 10px; margin-left: 40px;">
+                                            <div _ngcontent-serverapp-c6="" class="col-lg-2"><img
+                                                    _ngcontent-serverapp-c6="" height="22"
+                                                    src="/assets/images/marker.png"></div>
+                                            <div _ngcontent-serverapp-c6="" class="col-lg-9">
+                                                <h5 _ngcontent-serverapp-c6="" class="contact-info">1 Waybury Close,
+                                                    Bryanston, Johannesburg </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

@@ -1,17 +1,28 @@
-import { AwayComponent } from './components/away/away.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
+import { CommentComponent } from './components/comment/comment.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { SuggestionComponent } from './components/suggestion/suggestion.component';
 
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent,
+    component: HomeComponent
   },
   {
-    path: 'away',
-    component: AwayComponent,
+    path: 'feedback',
+    component: SuggestionComponent,
   },
+  {
+    path: 'comment',
+    component: CommentComponent,
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
+  }
 ];
 
 @NgModule({

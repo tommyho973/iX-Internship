@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import Post from 'src/app/models/post';
+
 import { PostService } from 'src/app/services/post/post.component';
 
 @Component({
@@ -49,6 +50,7 @@ export class PostComponent implements OnInit {
   async updatePost() {
     await this.postService.updatePostOnDb(this.post);
     this.post = new Post();
+    this.editing = false;
   }
 
   async deletePost(post: Post) {

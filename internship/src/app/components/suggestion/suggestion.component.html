@@ -1,1 +1,115 @@
-<p>suggestion works!</p>
+<!--<div class="card mt-5">
+    <div class="card-body">
+        <h1 class="card-title text-center">Feedback</h1>
+        <div class="input-group">
+            <span class="input-group-text">Feedback</span>
+            <textarea class="form-control" aria-label="With textarea" [(ngModel)]="suggestion.title"></textarea>
+        </div>
+        <a href="#" class="btn btn-primary">Submit</a> 
+        <button type="button" class="btn btn-info">Submit</button>
+    </div>
+</div> -->
+<div class="card">
+    <div class="card-title text-center mt-4">
+      <h3>Feedback List</h3>
+    </div>
+    <div class="card-body text-center">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Project Title"
+          aria-label="Project Title"
+          aria-describedby="basic-addon1"
+          [(ngModel)]="suggestion.title"
+        />
+      </div>
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Feedback"
+          aria-label="Feedback"
+          aria-describedby="basic-addon1"
+          [(ngModel)]="suggestion.content"
+        />
+      </div>
+  
+      <button
+        *ngIf="!this.editing"
+        class="btn btn-primary"
+        (click)="addSuggestion()"
+        [disabled]="this.suggestion.title == null || this.suggestion.content == null"
+      >
+        Add Post
+      </button>
+      <button
+        *ngIf="this.editing"
+        class="btn btn-primary"
+        (click)="updateSuggestion()"
+        [disabled]="this.suggestion.title == null || this.suggestion.content == null"
+      >
+        Update Post
+      </button>
+    </div>
+  </div>
+  
+  <div class="card mt-5">
+    <div class="card-title text-center mt-3">
+      <h3>Feedback from Database</h3>
+    </div>
+  
+    <div class="row">
+      <div class="col text-center">
+        <button class="btn btn-secondary" (click)="fetchSuggestions()">
+          Fetch Feedback
+        </button>
+      </div>
+    </div>
+  
+    <div class="card-body">
+      <hr />
+  
+      <div class="row" *ngIf="this.suggestions.length == 0">
+        <div class="col text-center">No Posts</div>
+      </div>
+  
+      <div class="accordion" id="accordionExample" *ngFor="let post of suggestions">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              [attr.data-bs-target]="'#A' + post.id"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              {{ post.title }}
+            </button>
+          </h2>
+          <div
+            id="{{ 'A' + post.id }}"
+            class="accordion-collapse collapse"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body">
+              <strong> {{ post.content }} </strong>
+  
+              <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                  <button class="btn btn-primary me-1" (click)="editSuggestion(post)">
+                    EDIT
+                  </button>
+                  <button class="btn btn-danger ms-1" (click)="deleteSuggestion(post)">
+                    DELETE
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

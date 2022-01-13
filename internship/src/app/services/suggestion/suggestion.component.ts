@@ -13,7 +13,7 @@ export class SuggestionService {
 
   addSuggestionToDb(suggestion: Suggestion) {
     this.http
-      .post(this.url + '/feed/suggestion', {
+      .post(this.url + '/suggestion/suggestion', {
         title: suggestion.title,
         content: suggestion.content,
       })
@@ -23,18 +23,18 @@ export class SuggestionService {
   }
 
   getSuggestions() {
-    return this.http.get(this.url + '/feed/suggestions').toPromise();
+    return this.http.get(this.url + '/suggestion/suggestions').toPromise();
   }
 
   updateSuggestionOnDb(suggestion: Suggestion) {
-    this.http.put(this.url + '/feed/' + suggestion.id, {
+    this.http.put(this.url + '/suggestion/' + suggestion.id, {
       title: suggestion.title,
       content: suggestion.content
     }).toPromise();
   }
 
   deleteSuggestionOnDb(suggestion: Suggestion) {
-    const deleteUrl = this.url + '/feed/' + suggestion.id;
+    const deleteUrl = this.url + '/suggestion/' + suggestion.id;
     return this.http.delete(deleteUrl).toPromise();
   }
 }
