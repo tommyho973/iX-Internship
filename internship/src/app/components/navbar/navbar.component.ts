@@ -19,8 +19,15 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  navToAway() {
-    this.router.navigate(['/away']);
+  navToFeedback() {
+    this.router.navigate(['/feedback']);
+  }
+
+  navToComment() {
+    this.router.navigate(['/comment']);
+  }
+  navToContact() {
+    this.router.navigate(['/contact']);
   }
 
 }
