@@ -12,6 +12,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { FormsModule } from '@angular/forms';
 import { PostComponent } from './components/post/post.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { SuggestionComponent } from './components/suggestion/suggestion.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { PostComponent } from './components/post/post.component';
     AwayComponent,
     HomeComponent,
     NavbarComponent,
-    PostComponent 
+    PostComponent,
+    ContactComponent,
+    SuggestionComponent 
   ],
   imports: [
     BrowserModule,
